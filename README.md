@@ -1,6 +1,6 @@
 # OrderedDictionary
 
-`OrderedDictionary` is a native Swift ordered set. It has the behavior and features of `Array` and `Set` in one abstract type.
+`OrderedDictionary` is a native Swift ordered dictionary. It has the behavior and features of `Dictionary` and `Array` in one abstract type.
 ```swift
 var person: OrderedDictionary<String, String> = ["firstName" : "John"]
 person+= ["lastName", "Smith"] // ["firstName": "John", "lastName": "Smith"]
