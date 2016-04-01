@@ -68,15 +68,15 @@ public struct OrderedDictionary<Key : Hashable, Value> : CollectionType, Diction
         }
         set(value) {
             switch (value, indexForKey(key)) {
-            case (let value?, _?):
+            case (let value?, _?): // Set value for existing key/value pair
                 dictionary[key] = value
-            case (let value?, nil):
+            case (let value?, nil): // Append new key/value pair
                 keysArray.append(key)
                 dictionary[key] = value
-            case (nil, let index?):
+            case (nil, let index?): // Remove existing key/value pair
                 keysArray.removeAtIndex(index)
                 dictionary[key] = nil
-            case (nil, nil): break
+            case (nil, nil): break // Remove nonexistant key/value pair; i.e. do nothing
             }
         }
     }
