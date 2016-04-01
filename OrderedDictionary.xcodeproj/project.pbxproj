@@ -10,6 +10,9 @@
 		A22767251CAECB06001B4CC3 /* OrderedDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = A22767241CAECB06001B4CC3 /* OrderedDictionary.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A227672C1CAECB07001B4CC3 /* OrderedDictionary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A22767211CAECB06001B4CC3 /* OrderedDictionary.framework */; };
 		A22767311CAECB07001B4CC3 /* OrderedDictionaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22767301CAECB07001B4CC3 /* OrderedDictionaryTests.swift */; };
+		A227673C1CAECB21001B4CC3 /* OrderedDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = A227673B1CAECB21001B4CC3 /* OrderedDictionary.swift */; };
+		A227673E1CAECC96001B4CC3 /* OrderedDictionary+Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = A227673D1CAECC96001B4CC3 /* OrderedDictionary+Array.swift */; };
+		A22767421CAEE2B4001B4CC3 /* OrderedDictionary+CustomStringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22767411CAEE2B4001B4CC3 /* OrderedDictionary+CustomStringConvertible.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +32,9 @@
 		A227672B1CAECB07001B4CC3 /* OrderedDictionaryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OrderedDictionaryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A22767301CAECB07001B4CC3 /* OrderedDictionaryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderedDictionaryTests.swift; sourceTree = "<group>"; };
 		A22767321CAECB07001B4CC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A227673B1CAECB21001B4CC3 /* OrderedDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderedDictionary.swift; sourceTree = "<group>"; };
+		A227673D1CAECC96001B4CC3 /* OrderedDictionary+Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "OrderedDictionary+Array.swift"; sourceTree = "<group>"; };
+		A22767411CAEE2B4001B4CC3 /* OrderedDictionary+CustomStringConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "OrderedDictionary+CustomStringConvertible.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,8 +59,8 @@
 		A22767171CAECB06001B4CC3 = {
 			isa = PBXGroup;
 			children = (
-				A22767231CAECB06001B4CC3 /* OrderedDictionary */,
-				A227672F1CAECB07001B4CC3 /* OrderedDictionaryTests */,
+				A22767231CAECB06001B4CC3 /* Sources */,
+				A227672F1CAECB07001B4CC3 /* Tests */,
 				A22767221CAECB06001B4CC3 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -68,21 +74,26 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		A22767231CAECB06001B4CC3 /* OrderedDictionary */ = {
+		A22767231CAECB06001B4CC3 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
 				A22767241CAECB06001B4CC3 /* OrderedDictionary.h */,
 				A22767261CAECB06001B4CC3 /* Info.plist */,
+				A227673D1CAECC96001B4CC3 /* OrderedDictionary+Array.swift */,
+				A227673B1CAECB21001B4CC3 /* OrderedDictionary.swift */,
+				A22767411CAEE2B4001B4CC3 /* OrderedDictionary+CustomStringConvertible.swift */,
 			);
+			name = Sources;
 			path = OrderedDictionary;
 			sourceTree = "<group>";
 		};
-		A227672F1CAECB07001B4CC3 /* OrderedDictionaryTests */ = {
+		A227672F1CAECB07001B4CC3 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
 				A22767301CAECB07001B4CC3 /* OrderedDictionaryTests.swift */,
 				A22767321CAECB07001B4CC3 /* Info.plist */,
 			);
+			name = Tests;
 			path = OrderedDictionaryTests;
 			sourceTree = "<group>";
 		};
@@ -194,6 +205,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A227673C1CAECB21001B4CC3 /* OrderedDictionary.swift in Sources */,
+				A22767421CAEE2B4001B4CC3 /* OrderedDictionary+CustomStringConvertible.swift in Sources */,
+				A227673E1CAECC96001B4CC3 /* OrderedDictionary+Array.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,6 +324,7 @@
 		A22767361CAECB07001B4CC3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -320,12 +335,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.bradhilton.OrderedDictionary;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		A22767371CAECB07001B4CC3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
