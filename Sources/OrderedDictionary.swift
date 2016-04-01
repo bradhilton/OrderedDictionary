@@ -39,6 +39,9 @@ public struct OrderedDictionary<Key : Hashable, Value> : CollectionType, Diction
         }
         set {
             dictionary[keysArray[position]] = nil
+            if let index = indexForKey(newValue.0) {
+                keysArray.removeAtIndex(index)
+            }
             keysArray[position] = newValue.0
             dictionary[newValue.0] = newValue.1
         }
