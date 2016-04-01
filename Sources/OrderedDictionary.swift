@@ -37,13 +37,23 @@ public struct OrderedDictionary<Key : Hashable, Value> : CollectionType, Diction
             let key = keysArray[position]
             return (key, dictionary[key]!)
         }
-        set {
+        set(pair) {
+            let key = pair.0
+            let value = pair.1
+            
+            // Clear existing key/value pair from dictionary
             dictionary[keysArray[position]] = nil
-            if let index = indexForKey(newValue.0) {
+            
+            // Remove key from current position in keysArray if present
+            if let index = indexForKey(key) {
                 keysArray.removeAtIndex(index)
             }
-            keysArray[position] = newValue.0
-            dictionary[newValue.0] = newValue.1
+            
+            // Set key in keysArray at new position
+            keysArray[position] = key
+            
+            // Set key/value pair in backing dictionary
+            dictionary[key] = value
         }
     }
     
@@ -56,13 +66,13 @@ public struct OrderedDictionary<Key : Hashable, Value> : CollectionType, Diction
         get {
             return dictionary[key]
         }
-        set {
-            switch (newValue, indexForKey(key)) {
-            case (let newValue?, _?):
-                dictionary[key] = newValue
-            case (let newValue?, nil):
+        set(value) {
+            switch (value, indexForKey(key)) {
+            case (let value?, _?):
+                dictionary[key] = value
+            case (let value?, nil):
                 keysArray.append(key)
-                dictionary[key] = newValue
+                dictionary[key] = value
             case (nil, let index?):
                 keysArray.removeAtIndex(index)
                 dictionary[key] = nil
