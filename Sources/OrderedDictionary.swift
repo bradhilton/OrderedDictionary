@@ -6,9 +6,7 @@
 //  Copyright © 2016 Brad Hilton. All rights reserved.
 //
 
-//Dictionary
-
-public struct OrderedDictionary<Key : Hashable, Value> : CollectionType, DictionaryLiteralConvertible {
+public struct OrderedDictionary<Key : Hashable, Value> : MutableCollectionType, DictionaryLiteralConvertible {
     
     internal var keysArray: [Key] = []
     internal var dictionary: [Key: Value] = [:]
